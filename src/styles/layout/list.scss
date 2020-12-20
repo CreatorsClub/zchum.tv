@@ -1,0 +1,64 @@
+.list {
+  $this: &;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    flex: 0 1 auto;
+
+    &--expand {
+      display: flex;
+      flex: 1 1 auto;
+    }
+
+    &--fixed {
+      flex: 0 0 auto;
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--inline {
+    display: inline-flex;
+  }
+
+  &--middle {
+    align-items: center;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--end {
+    justify-content: flex-end;
+  }
+
+  &--ordered {
+    list-style: decimal;
+    margin-left: 1em;
+
+    #{$this}__item {
+      padding-left: .2em;
+    }
+  }
+
+  &--spaced {
+    & > * + * {
+      margin-top: 16px;
+    }
+
+    &#{$this}--horizontal {
+      & > * + * {
+        margin-top: 0;
+        margin-left: 16px;
+      }
+    }
+  }
+}

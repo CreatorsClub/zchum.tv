@@ -1,0 +1,95 @@
+<section class="section section--left">
+  <div class="container wrapper">
+    {% if social_networks.youtube %}
+      <div class="section__header">
+        <div class="section-header">
+          <h3 class="section-header__heading">{{ section.settings.heading }}</h3>
+
+          <div class="section-header__cta">
+            <a
+              href="{{ social_networks.youtube.url }}"
+              target="_blank"
+              class="button button--primary button--outline"
+            >
+              <span>{{ section.settings.cta_label }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section__content">
+        <div class="grid grid--waffle">
+          {% for video in social_networks.youtube.videos limit:section.settings.count %}
+            <div class="grid__column grid__column--12 grid__column--4@md">
+              <div class="video-tile">
+                <a
+                  href="{{ video.url }}"
+                  target="_blank"
+                  class="video-tile__link"
+                >
+                  <div class="video-tile__image-container">
+                    <div class="video-tile__image">
+                      <div class="image image--video-thumbnail">
+                        <div class="image__object">
+                          <img
+                            src="{{ video.thumbnail_url }}"
+                            alt="{{ video.title }}"
+                            class="image__image"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="video-tile__image-overlay"></div>
+
+                      <div class="video-tile__icon">
+                        <img
+                          src="{{ 'yt_icon.png' | asset_url }}"
+                          alt="Watch Video"
+                          class="video-tile__icon-image"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="video-tile__caption">
+                    <p class="video-tile__title">
+                      {{ video.title | truncate: 70 }}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      YouTube channel is not set up in the store settings.
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Recent Videos",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Recent Videos"
+      },
+      {
+        "type": "text",
+        "id": "cta_label",
+        "label": "CTA Label",
+        "default": "Visit Channel"
+      },
+      {
+        "type": "number",
+        "id": "count",
+        "label": "Number of videos",
+        "default": 3
+      }
+    ],
+  }
+{% endschema %}

@@ -1,0 +1,26 @@
+.card {
+  padding: 1.5rem 2rem;
+  background-color: get-color(gray-alert);
+  border-radius: 2px;
+  color: rgba(get-color(black), .6);
+
+  &__container {
+    & > * + * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__footer {
+    justify-content: center;
+    border-top: 1px solid rgba(get-color(black), .1);
+    padding-top: 1.5rem;
+
+    & > * + * {
+      margin-left: 1.5rem;
+    }
+  }
+
+  strong {
+    color: get-color(black);
+  }
+}

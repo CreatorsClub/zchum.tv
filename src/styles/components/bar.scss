@@ -1,0 +1,48 @@
+.bar {
+  background: linear-gradient(90deg, get-color(secondary) 0%, get-color(primary) 100%);
+  color: get-color(white);
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  &__paragraph {
+    text-transform: uppercase;
+    text-align: center;
+
+    &--left {
+      @media (min-width: get-breakpoint(sm)) {
+        text-align: left;
+      }
+    }
+
+    &--center {
+      @media (min-width: get-breakpoint(sm)) {
+        text-align: center;
+      }
+    }
+
+    &--right {
+      @media (min-width: get-breakpoint(sm)) {
+        text-align: right;
+      }
+    }
+  }
+
+  &--success {
+    background-color: get-color(white);
+    color: get-color(primary);
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  &--status {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}

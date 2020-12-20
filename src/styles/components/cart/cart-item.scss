@@ -1,0 +1,98 @@
+.cart-item {
+  position: relative;
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 600;
+
+  & + & {
+    border-top: $divider-border;
+  }
+
+  &__section {
+    & + & {
+      @media (min-width: get-breakpoint(sm)) {
+        margin-left: 1rem;
+      }
+    }
+
+    &--main {
+      flex: 1 1 auto;
+    }
+
+    &--price {
+      position: absolute;
+      bottom: 38px;
+      left: 160px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        position: static;
+        flex: 0 0 100px;
+      }
+    }
+
+    &--quantity {
+      position: absolute;
+      bottom: 28px;
+      left: 95px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        position: static;
+        flex: 0 0 130px;
+      }
+    }
+
+    &--remove {
+      @media (min-width: get-breakpoint(sm)) {
+        flex: 0 0 40px;
+        text-align: right;
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+
+    @media (min-width: get-breakpoint(sm)) {
+      align-items: center;
+    }
+  }
+
+  &__image {
+    flex: 0 0 80px;
+  }
+
+  &__description {
+    flex: 1 1 auto;
+    margin-left: 1rem;
+  }
+
+  &__title {
+    color: get-color(white);
+
+    &:hover {
+      color: get-color(primary);
+    }
+  }
+
+  &__remove {
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    padding: .4rem;
+    outline: none;
+
+    &:hover {
+      svg {
+        stroke: get-color(primary);
+      }
+    }
+
+    svg {
+      transition: $transition-base;
+      stroke: get-color(white);
+    }
+  }
+}

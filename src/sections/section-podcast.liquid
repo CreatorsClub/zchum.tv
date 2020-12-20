@@ -1,0 +1,117 @@
+<section class="section section--left section--large section--podcast">
+  <div
+    class="section__background"
+    style="background-image: url('./podcast_bg.gif'); mix-blend-mode: luminosity;"
+  ></div>
+
+  <div class="container wrapper">
+    <div class="section__grid grid grid--middle grid--justify">
+      <div class="grid__column grid__column--12 grid__column--6@sm grid__column--5@md">
+        <div class="section__content">
+          <h1 class="section__heading">{{ section.settings.heading }}</h1>
+
+          <p class="section__paragraph">{{ section.settings.paragraph }}</p>
+
+          <div class="section__ctas">
+            <a
+              href="{{ section.settings.cta1_href }}"
+              class="button button--white button--outline"
+            >{{ section.settings.cta1_label }}</a>
+
+            <a
+              href="{{ section.settings.cta2_href }}"
+              class="button button--white button--outline"
+            >{{ section.settings.cta2_label }}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid__column grid__column--12 grid__column--6@sm grid__column--5@md">
+        <div class="video-tile">
+          <a
+            href="{{ section.settings.podcast_cta_href }}"
+            target="_blank"
+            class="video-tile__link"
+          >
+            <div class="video-tile__image-container">
+              <div class="video-tile__image">
+                <div class="image image--video-thumbnail">
+                  <div class="image__object">
+                    <img
+                      src="{{ section.settings.podcast_image }}"
+                      class="image__image"
+                    />
+                  </div>
+                </div>
+
+                <div class="video-tile__image-overlay"></div>
+
+                <div class="video-tile__overlay-button">
+                  <div class="button button--primary button--icon button--unhoverable">
+                    <span>{% include 'icon-play-small' %}</span>
+                    <span>{{ section.settings.podcast_cta_label }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Hello!"
+      },
+      {
+        "type": "text",
+        "id": "paragraph",
+        "label": "Paragraph",
+        "default": "Hello!"
+      },
+      {
+        "type": "text",
+        "id": "cta1_label",
+        "label": "CTA button label"
+      },
+      {
+        "type": "url",
+        "id": "cta1_href",
+        "label": "CTA button href"
+      },
+      {
+        "type": "text",
+        "id": "cta2_label",
+        "label": "CTA button label"
+      },
+      {
+        "type": "url",
+        "id": "cta2_href",
+        "label": "CTA button href"
+      },
+      {
+        "type": "image_picker",
+        "id": "podcast_image",
+        "label": "Podcast image"
+      },
+      {
+        "type": "text",
+        "id": "podcast_cta_label",
+        "label": "Podcast CTA button label"
+      },
+      {
+        "type": "url",
+        "id": "podcast_cta_href",
+        "label": "Podcast CTA button href"
+      }
+    ]
+  }
+{% endschema %}

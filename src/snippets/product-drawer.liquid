@@ -1,0 +1,156 @@
+<aside class="drawer drawer--product" data-drawer="product">
+  <div class="drawer__background" data-drawer-trigger="product"></div>
+
+  <div class="drawer__content">
+    <div class="drawer__content-inner">
+      <div class="product-drawer">
+        <div class="product-drawer__section">
+          <div class="product-drawer__header">
+            <div class="product-drawer__header-item product-drawer__header-item--tick">
+              {% include 'icon-accept' %}
+            </div>
+            <div class="product-drawer__header-item product-drawer__header-item--heading">
+              <h4 class="product-drawer__heading">Added to cart</h4>
+            </div>
+            <div class="product-drawer__header-item product-drawer__header-item--close">
+              <a href="#" class="product-drawer__close" data-drawer-trigger="product">
+                {% include 'icon-close-big' %}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-drawer__section">
+          <div class="product-drawer__item-info">
+            <div class="inline-image">
+              <div class="inline-image__image">
+                <div class="image">
+                  <div class="image__object">
+                    <img src="" alt="" data-product-info="img">
+                  </div>
+                </div>
+              </div>
+              <div class="inline-image__content">
+                <h5 class="inline-image__heading" data-product-info="title">{{ product.title }}</h5>
+                <p class="inline-image__price" data-product-info="price"></p>
+                <p class="inline-image__qty">
+                  Quantity:
+                  <span data-product-info="qty"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-drawer__section">
+          <div class="product-drawer__subtotal">
+            <div class="product-drawer__subtotal-item">
+              <span class="product-drawer__subtotal-label">Cart subtotal (<span data-product-info="cart-qty"></span>):</span>
+            </div>
+            <div class="product-drawer__subtotal-item product-drawer__subtotal-item--value">
+              <strong class="product-drawer__subtotal-value" data-product-info="cart-price"></strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-drawer__section">
+          <div class="product-drawer__cta">
+            <div class="product-drawer__cta-item product-drawer__cta-item--keep-shopping">
+              <a
+                href="{{ routes.cart_url }}"
+                class="button button--primary button--outline button--expand"
+              ><span>View cart</span></a>
+            </div>
+
+            <div class="product-drawer__cta-item product-drawer__cta-item--go-to-cart">
+              <form
+                action="{{ routes.cart_url }}"
+                method="post"
+                novalidate
+              >
+                <button
+                  type="submit"
+                  name="checkout"
+                  class="button button--primary button--expand"
+                >
+                  Checkout
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-drawer__section product-drawer__section--recommended">
+          <h4 class="product-drawer__recommended-heading">{{ section.settings.recommended_label }}</h4>
+
+          <ul class="product-drawer__recommended list">
+            {% assign recommended_index = 0 %}
+            {% for recommended in collections.bestsellers.products %}
+              {% if recommended.available and recommended.id != product.id %}
+                <li class="list__item">
+                  <div class="product-drawer__recommended-item">
+                    <div class="inline-image">
+                      <a href="{{ recommended.url }}" class="inline-image__image">
+                        <div class="image">
+                          <div class="image__object">
+                            <img
+                              src="{{ recommended.featured_image.src | img_url: '120x' }}"
+                              alt="{{ recommended.featured_image.alt }}"
+                            >
+                          </div>
+                        </div>
+                      </a>
+                      <div class="inline-image__content">
+                        <a href="{{ recommended.url }}" class="inline-image__link">
+                          <h5 class="inline-image__heading">
+                            {{ recommended.title }}
+                          </h5>
+                        </a>
+                        <p class="inline-image__price">{{ recommended.price | money }}</p>
+                        <div class="inline-image__cta">
+                          {% if recommended.has_only_default_variant %}
+                            <button
+                              data-product="recommended-add"
+                              data-recommended-quantity="1"
+                              data-recommended-variant="{{ recommended.selected_or_first_available_variant.id }}"
+                              class="button button--xsmall button--primary"
+                            >
+                              Add to cart
+                              <span class="button__spinner">
+                                <div class="spinner spinner--xsmall spinner--light"></div>
+                              </span>
+                            </button>
+                            <div
+                              data-product="recommended-added"
+                              class="product-drawer__recommended-added hidden"
+                            >
+                              <span class="product-drawer__recommended-added-icon">
+                                {% include 'icon-accept' %}
+                              </span>
+                              <span class="product-drawer__recommended-added-label">Added to cart</span>
+                            </div>
+                          {% else %}
+                            <a
+                              href="{{ recommended.url }}"
+                              class="button button--xsmall button--primary"
+                            >
+                              View Product
+                            </a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                {% assign recommended_index = recommended_index | plus : 1 %}
+              {% endif %}
+              {% if recommended_index >= section.settings.recommended_amount %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

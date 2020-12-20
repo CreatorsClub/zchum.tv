@@ -1,0 +1,58 @@
+<!-- TODO: Add background overlay output -->
+<!-- TODO: Add the img_url filter: | img_url: '1920x' -->
+<section
+  class="hero"
+  style="background-image: url({{ section.settings.background }});"
+>
+  <div class="container wrapper">
+    <div class="hero__content">
+      <h1 class="hero__heading">{{ section.settings.heading }}</h1>
+
+      <h2 class="hero__subheading">{{ section.settings.subheading }}</h2>
+
+      <div class="hero__cta-container">
+        <div class="hero__cta">
+          <a
+            href="{{ section.settings.cta-href }}"
+            class="button button--primary"
+          >{{ section.settings.cta-label }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- TODO: Add background overlay setting -->
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Hello!"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Hello!"
+      },
+      {
+        "type": "image_picker",
+        "id": "background",
+        "label": "Hero background"
+      },
+      {
+        "type": "text",
+        "id": "cta-label",
+        "label": "CTA button label"
+      },
+      {
+        "type": "url",
+        "id": "cta-href",
+        "label": "CTA button href"
+      }
+    ]
+  }
+{% endschema %}

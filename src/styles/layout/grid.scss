@@ -1,0 +1,188 @@
+.grid {
+  $this: &;
+  
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$gutter / 2};
+  margin-right: -#{$gutter / 2};
+
+  @media (min-width: get-breakpoint(sm)) {
+    margin-left: -#{$gutter-sm / 2};
+    margin-right: -#{$gutter-sm / 2};
+  }
+
+  &__column {
+    flex: 1;
+    max-width: 100%;
+    padding-left: #{$gutter / 2};
+    padding-right: #{$gutter / 2};
+
+    @media (min-width: get-breakpoint(sm)) {
+      padding-left: #{$gutter-sm / 2};
+      padding-right: #{$gutter-sm / 2};
+    }
+
+    @for $i from 1 through 12 {
+      &--#{$i} {
+        flex-basis: percentage($i / 12);
+        max-width: percentage($i / 12);
+
+        @if $i == 12 {
+          width: 100%;
+        }
+      }
+    }
+
+    @each $breakpoint, $width in $breakpoints {
+      @media (min-width: get-breakpoint($breakpoint)) {
+        @for $i from 1 through 12 {
+          &--#{$i}\@#{$breakpoint} {
+            flex-basis: percentage($i / 12);
+            max-width: percentage($i / 12);
+          }
+        }
+      }
+    }
+
+    &--shrink {
+      flex: 0 1 auto;
+    }
+
+    &--middle {
+      align-self: center;
+    }
+
+    &--bottom {
+      align-self: flex-end;
+    }
+
+    &--baseline {
+      align-self: baseline;
+    }
+
+    &--stretch {
+      align-self: stretch;
+    }
+
+    // TODO: Improve
+    &--first\@sm {
+      @media (min-width: get-breakpoint(sm)) {
+        order: -1;
+      }
+    }
+
+    &--last\@sm {
+      @media (min-width: get-breakpoint(sm)) {
+        order: 1;
+      }
+    }
+  }
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--justify {
+    justify-content: space-between;
+  }
+
+  &--space {
+    justify-content: space-around;
+  }
+
+  &--middle {
+    align-items: center;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+
+  &--stretch {
+    align-items: stretch;
+  }
+
+  &--stack {
+    flex-direction: column;
+  }
+
+  &--gapless {
+    margin-left: 0;
+    margin-right: 0;
+
+    & > #{$this}__column {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &--small {
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-left: -.5rem;
+      margin-right: -.5rem;
+    }
+
+    & > #{$this}__column {
+      padding-left: .5rem;
+      padding-right: .5rem;
+
+      @media (min-width: get-breakpoint(sm)) {
+        padding-left: .5rem;
+        padding-right: .5rem;
+      }
+    }
+  }
+
+  &--large\@#{md} {
+    @media (min-width: get-breakpoint(md)) {
+      margin-left: -#{$gutter-sm};
+      margin-right: -#{$gutter-sm};
+    }
+
+    & > #{$this}__column {
+      @media (min-width: get-breakpoint(md)) {
+        padding-left: $gutter-sm;
+        padding-right: $gutter-sm;
+      }
+    }
+  }
+
+  &--waffle {
+    margin: -#{$gutter / 2};
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin: -#{$gutter-sm / 2};
+    }
+
+    & > #{$this}__column {
+      padding: #{$gutter / 2};
+
+      @media (min-width: get-breakpoint(sm)) {
+        padding: #{$gutter-sm / 2};
+      }
+    }
+
+    &#{$this}--small {
+      margin: -#{$gutter / 4};
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin: -#{$gutter-sm / 4};
+      }
+
+      & > #{$this}__column {
+        padding: #{$gutter / 4};
+
+        @media (min-width: get-breakpoint(sm)) {
+          padding: #{$gutter-sm / 4};
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,180 @@
+.order-success {
+  background-color: $color-background-alternative;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+
+  &__heading {
+    // TODO: Standardize
+    font-size: 1.4rem;
+    line-height: $line-general;
+    color: get-color(white);
+
+    @media (min-width: get-breakpoint(sm)) {
+      font-size: 2.5rem;
+      line-height: $line-header;
+    }
+  }
+
+  &__subheading {
+    margin-top: 0.8rem;
+    color: get-color(secondary-pale);
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-top: 1.5rem;
+    }
+
+    &-line {
+      & + & {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+
+  &__social-share {
+    margin-top: 1rem;
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-top: 1.6rem;
+    }
+  }
+
+  &__action-link {
+    color: get-color(secondary-pale);
+    border-bottom: 1px solid get-color(secondary-pale);
+
+    &:hover {
+      color: get-color(primary);
+      border-color: get-color(primary);
+    }
+  }
+
+  &__main {
+    margin-top: 32px;
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-top: 80px;
+    }
+  }
+
+  &__content {
+    margin-top: 1.6rem;
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-top: 0;
+    }
+
+    &-section {
+      & + & {
+        padding-top: 1.3rem;
+        margin-top: 1.4rem;
+        border-top: 1px solid get-color(divider);
+      }
+    }
+  }
+
+  &__shipment {
+    & + & {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid get-color(divider);
+    }
+  }
+
+  &__shipment-heading {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  &__delivery-status {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.2em;
+    color: get-color(white);
+
+    @media (min-width: get-breakpoint(sm)) {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__cancel-items {
+    margin-top: 0.9rem;
+  }
+
+  &__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 1.5rem;
+  }
+
+  &__item {
+    font-size: $text-small;
+
+    @media (min-width: get-breakpoint(sm)) {
+      font-size: 1rem;
+    }
+
+    & + & {
+      margin-top: 0.7rem;
+    }
+  }
+
+  &__sidebar {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 1.6rem 1rem;
+    background-color: rgba(get-color(black), 0.4);
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 2rem;
+    }
+
+    @media (min-width: get-breakpoint(md)) {
+      margin-left: 2rem;
+    }
+
+    &-section {
+      & + & {
+        margin-top: 1.7rem;
+      }
+    }
+
+    &-heading {
+      margin-bottom: 0.5rem;
+      // TODO: Improve typography
+      font-size: 1rem;
+    }
+
+    &-action {
+      margin-top: 0.1rem;
+    }
+  }
+
+  &__order-status {
+    font-size: 1.2rem;
+    line-height: $line-general;
+  }
+
+  &__payment {
+    &-details {
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      margin-right: 0.4rem;
+    }
+  }
+
+  &__total {
+    text-transform: uppercase;
+    color: get-color(white);
+  }
+}

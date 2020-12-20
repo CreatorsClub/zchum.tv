@@ -1,0 +1,28 @@
+.cart-widget {
+  $this: &;
+
+  position: relative;
+
+  &__items {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    display: block;
+    border-radius: 1px;
+    border: 1px solid get-color(white);
+    color: get-color(white);
+    background-color: get-color(secondary);
+    font-weight: $weight-header;
+    padding: .1rem .2rem;
+    line-height: 1.2em;
+    text-align: center;
+    min-width: 17px;
+  }
+
+  &.is-empty {
+    #{$this}__items {
+      display: none;
+    }
+  }
+}

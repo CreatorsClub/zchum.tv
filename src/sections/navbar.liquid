@@ -1,0 +1,41 @@
+<header class="navbar">
+  <div class="container wrapper">
+    <div class="grid grid--middle">
+      <div class="grid__column grid__column--4">
+        <ul class="navbar__nav navbar__nav--socials list list--horizontal list--middle">
+          {% include 'socials', li_class: 'list__item', a_class: 'navbar__link' %}
+        </ul>
+      </div>
+
+      <div class="grid__column grid__column--4">
+        <a
+          href="/"
+          class="navbar__logo"
+        >
+          <img
+            src="{{ 'logo.png' | asset_url }}"
+            alt="{{ shop.name }}"
+          >
+        </a>
+      </div>
+
+      <nav class="grid__column grid__column--4">
+        <ul class="navbar__nav navbar__nav--menu list list--horizontal list--end">
+          <li class="list__item">
+            <a href="/about" class="navbar__link">About</a>
+          </li>
+
+          <li class="list__item">
+            {% include 'basket' %}
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "Navbar"
+  }
+{% endschema %}

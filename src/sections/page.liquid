@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="main__sections">
+    <div class="container container--md wrapper">
+      <div class="static-page">
+        <div class="static-page__header">
+          <h1 class="static-page__heading">
+            {{ page.title }}
+          </h1>
+        </div>
+
+        <div class="static-page__content">
+          <div class="html-formatter html-formatter--page">
+            {% case page.handle %}
+              {% when 'privacy-policy' %}
+              {% include 'privacy-policy-page-content' %}
+              {% when 'about' %}
+              {% include 'about-page-content' %}
+            {% endcase %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

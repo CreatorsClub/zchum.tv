@@ -1,0 +1,33 @@
+.product-option {
+  &__name {
+    color: #656473;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  &__values {
+    margin: -4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__value {
+    padding: 4px;
+
+    &--regular {
+      flex: 0;
+    }
+  }
+
+  &__error {
+    display: none;
+    color: get-color(error);
+    margin-top: 6px;
+    font-size: $text-small;
+
+    &.is-visible {
+      display: block;
+    }
+  }
+}

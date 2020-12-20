@@ -1,0 +1,25 @@
+.static-page {
+  padding: 40px 0 40px 0;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 45px;
+    padding-bottom: 90px;
+  }
+
+  &__header {
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media (min-width: get-breakpoint(sm)) {
+      margin-bottom: 55px;
+    }
+  }
+
+  &__heading {
+    font-size: 30px;
+
+    @media (min-width: get-breakpoint(sm)) {
+      font-size: 34px;
+    }
+  }
+}

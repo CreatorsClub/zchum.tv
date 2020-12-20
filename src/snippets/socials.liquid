@@ -1,0 +1,42 @@
+{% for social in shop.social_networks %}
+  <li class="{{ li_class }}">
+    <a href="{{ social.public_url }}" class="{{ a_class }}">
+      {% assign icon_file = 'icon-' | append: social.name %}
+      {% include icon_file %}
+    </a>
+  </li>
+{% endfor %}
+
+{% comment %}
+{% if settings.social_facebook_link != blank %}
+  <li class="{{ li_class }}">
+    <a href="{{ settings.social_facebook_link }}" class="{{ a_class }}">
+      {% include 'icon-facebook' %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_twitter_link != blank %}
+  <li class="{{ li_class }}">
+    <a href="{{ settings.social_twitter_link }}" class="{{ a_class }}">
+      {% include 'icon-twitter' %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_instagram_link != blank %}
+  <li class="{{ li_class }}">
+    <a href="{{ settings.social_instagram_link }}" class="{{ a_class }}">
+      {% include 'icon-instagram' %}
+    </a>
+  </li>
+{% endif %}
+
+{% if settings.social_youtube_link != blank %}
+  <li class="{{ li_class }}">
+    <a href="{{ settings.social_youtube_link }}" class="{{ a_class }}">
+      {% include 'icon-youtube' %}
+    </a>
+  </li>
+{% endif %}
+{% endcomment %}

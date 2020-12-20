@@ -1,0 +1,15 @@
+.container {
+  display: block;
+  width: 100%;
+  max-width: $container-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--hd {
+    max-width: $container-width-hd;
+  }
+
+  &--md {
+    max-width: $container-width-md;
+  }
+}

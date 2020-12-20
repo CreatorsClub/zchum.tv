@@ -1,0 +1,202 @@
+<div class="order-success">
+  <div class="container container--md wrapper">
+    <header class="order-success__header">
+      <h1 class="order-success__heading">
+        Your order {{ order.name }} is confirmed.
+        {% if section.settings.heading_line2 != '' %}
+          <br>{{ section.settings.heading_line2 }}
+        {% endif %}
+      </h1>
+      <div class="order-success__subheading">
+        <p class="order-success__subheading-line">
+          We sent a confirmation to {{ order.email }}. We'll email you an update when your order ships!
+        </p>
+      </div>
+      <div class="order-success__social-share">
+        {% include 'order-success-twitter' %}
+      </div>
+    </header>
+
+    <div class="order-success__main">
+      <div class="grid grid--center">
+        <div class="grid__column grid__column--12 grid__column--5@sm edge-mobile">
+          <aside class="order-success__sidebar">
+            <div class="order-success__sidebar-section">
+              <h3 class="order-success__sidebar-heading">Shipping to</h3>
+              <address class="order-success__address">
+                {{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}<br>
+                {{ order.shipping_address.address1 }}<br>
+                {% if order.shipping_address.address2 != '' %}
+                  {{ order.shipping_address.address2 }}<br>
+                {% endif %}
+                {{ order.shipping_address.city }}, {{ order.shipping_address.province }} {{ order.shipping_address.zip }}<br>
+                {{ order.shipping_address.country }}
+              </address>
+              <!-- <div class="order-success__sidebar-action">
+                <a href="#" class="order-success__action-link">
+                  Change
+                </a>
+              </div> -->
+            </div>
+
+            <div class="order-success__sidebar-section">
+              <h3 class="order-success__sidebar-heading">Contact email</h3>
+              <p>{{ order.email || replace: "@", "&#8203;@" }}</p>
+              <!-- <div class="order-success__sidebar-action">
+                <a href="#" class="order-success__action-link">
+                  Change
+                </a>
+              </div> -->
+            </div>
+
+            <!-- TODO: Replace with proper data once backend updated -->
+            <!-- <div class="order-success__sidebar-section">
+              <h3 class="order-success__sidebar-heading">Payment method</h3>
+              <p class="order-success__payment-details">
+                <span class="order-success__payment-icon">{% include 'icon-visa' %}</span> ending in 5965
+              </p>
+            </div> -->
+
+            <div class="order-success__sidebar-section">
+              <h3 class="order-success__sidebar-heading">Payment status</h3>
+              <!-- TODO: Replace with proper data once backend updated -->
+              <p class="order-success__payment-details">
+                Paid
+              </p>
+            </div>
+
+            {% if order.message %}
+              <div class="order-success__sidebar-section">
+                <h3 class="order-success__sidebar-heading">Message left</h3>
+                <p>{{ order.message }}</p>
+              </div>
+            {% endif %}
+          </aside>
+        </div>
+
+        <div class="grid__column grid__column--12 grid__column--7@sm grid__column--first@sm">
+          <div class="order-success__content">
+            <div class="order-success__content-section">
+              <div class="order-success__shipments">
+                <!-- FIXME: Change once backend is updated with number of shipments info -->
+                <div class="order-success__shipment">
+                  <!-- FIXME: Add only if more than one shipments -->
+                  <h3 class="order-success__shipment-heading">Order summary</h3>
+                  <!-- FIXME: Update with liquid data -->
+                  <!-- <h2 class="order-success__delivery-status">
+                    Arrives between Tuesday, Nov 8<br>
+                    and Wendesday, Nov 9
+                  </h2> -->
+                  <ul class="order-success__items">
+                    {% for line_item in order.line_items %}
+                      <li class="order-success__item">
+                        <div class="inline-image inline-image--columns">
+                          <a href="{{ line_item.url }}" class="inline-image__image inline-image__image--small">
+                            <div class="image">
+                              <div class="inline-image__image-object">
+                                <!-- FIXME: Image resolution -->
+                                <img src="{{ line_item.image | img_url: '100x100' | img_tag }}" alt="">
+                              </div>
+                            </div>
+                          </a>
+                          <div class="inline-image__content">
+                            <h5 class="inline-image__heading">{{ line_item.title }}</h5>
+                            <!-- FIXME: Variant titles from liquid (not hardcoded) -->
+                            <p class="inline-image__subheading">
+                              {% capture variant %}{{ line_item.properties.color }} {{ line_item.properties.size }}{% endcapture %}
+                              {{ variant | strip | replace: " ", ", " }}
+                            </p>
+                          </div>
+                          <div class="inline-image__qty">
+                            {{ line_item.quantity }}
+                          </div>
+                          <div class="inline-image__price">
+                            {{ line_item.original_price | money }}
+                          </div>
+                        </div>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  <!-- <div class="order-success__cancel-items">
+                    <a href="#" class="order-success__action-link">
+                      Cancel items
+                    </a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+            {% if order.donation %}
+            <div class="order-success__content-section">
+              <div class="order-success__donation">
+                <div class="inline-image inline-image--columns">
+                  <div class="inline-image__image inline-image__image--small">
+                    <div class="inline-image__donation-image">
+                      <span class="inline-image__donation-image-icon">$</span>
+                    </div>
+                  </div>
+                  <div class="inline-image__content">
+                    <h5 class="inline-image__heading">Donation</h5>
+                  </div>
+                  <div class="inline-image__qty">
+                    <!-- FIXME: Make sure this works. -->
+                    {{ order.quantity }}
+                    1
+                  </div>
+                  <div class="inline-image__price">
+                    {{ order.donation | money }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            <div class="order-success__content-section">
+              <div class="order-success__summary">
+                {% capture subtotal_length %}{{ order.line_items | size }}{% endcapture %}
+
+                {% capture subtotal_items_pluralize_string %}
+                  {% if subtotal_length == "1" %}
+                    {{ 'item' }}
+                  {% else %}
+                    {{ 'items' }}
+                  {% endif %}
+                {% endcapture %}
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Subtotal ({{ subtotal_length }} {{ subtotal_items_pluralize_string | strip }})</td>
+                      <td>{{ order.subtotal_price | money }}</td>
+                    </tr>
+                    <tr>
+                      <td>Shipping</td>
+                      <td>{{ order.shipping_price | money }}</td>
+                    </tr>
+                    <tr>
+                      <td class="order-success__total"><strong>Total</strong></td>
+                      <td class="order-success__total"><strong>{{ order.total_price | money }}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Order Success",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading_line2",
+        "label": "Heading Line 2",
+        "default": "Thank you for your support!"
+      }
+    ]
+  }
+{% endschema %}

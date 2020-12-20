@@ -1,0 +1,72 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Skeleton theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/github.com\/Shopify\/skeleton-theme",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/skeleton-theme\/issues"
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "url",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "url",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "url",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "url",
+        "id": "logo_href",
+        "label": "Logo href"
+      },
+      {
+        "type": "text",
+        "id": "logo_label",
+        "label": "Logo label"
+      },
+      {
+        "type": "url",
+        "id": "logo_label_href",
+        "label": "Logo label href"
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "number",
+        "id": "amount_min",
+        "label": "Min Amount",
+        "default": 1
+      },
+      {
+        "type": "number",
+        "id": "amount_max",
+        "label": "Max Amount",
+        "default": 10
+      }
+    ]
+  }
+]

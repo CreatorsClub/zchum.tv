@@ -1,0 +1,36 @@
+.content-text {
+  > * + * {
+    margin-top: 1rem;
+  }
+
+  ol,
+  ul {
+    padding: 0;
+    padding-left: 2rem;
+
+    li {
+      & + li {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  ol {
+    list-style-type: none;
+
+    li {
+      position: relative;
+      counter-increment: li;
+
+      &::before {
+        content: counter(li);
+        position: absolute;
+        top: 0;
+        left: -30px;
+        display: inline-block;
+        font-weight: 600;
+        color: rgba(0, 0, 0, .6);
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<script>var modalCarousel = null;</script>
+<div class="modal modal--sm" data-modal="gallery">
+  <div class="modal__overlay" data-modal-close="gallery"></div>
+
+  <div class="modal__content">
+    <div class="modal__back modal__back--mobile" data-modal-close="gallery">
+      <div class="modal__back-chevron"></div>
+        <span>Return</span>
+      </div>
+    <div class="modal__back modal__back--desktop" data-modal-close="gallery">
+      {% include 'icon-close-big' %}
+    </div>
+
+    <div class="gallery gallery--modal" data-gallery="product">
+      <div class="gallery__main" data-gallery-type="main">
+        {% for image in product.images %}
+          <div class="gallery__slide">
+            <div class="gallery__image-container">
+              <div class="gallery__image">
+                <img class="gallery__image-object" src="{{ image | img_url: '2048x' }}" alt="{{ image | img_alt }}" />
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+
+      <div class="gallery__thumbs" data-gallery-type="thumbs">
+        <div class="gallery__thumb-top">{% include 'icon-chevron-top' %}</div>
+
+        {% for image in product.images %}
+          <div class="gallery__thumb">
+            <div class="gallery__image-container">
+              <div class="gallery__image">
+                <img class="gallery__image-object" src="{{ image | img_url: '2048x' }}" alt="{{ image | img_alt }}" />
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="gallery__thumb-bottom">{% include 'icon-chevron-bottom' %}</div>
+      </div>
+    </div>
+  </div>
+</div>

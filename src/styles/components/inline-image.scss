@@ -1,0 +1,103 @@
+.inline-image {
+  $this: &;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-size: $text-small;
+
+  @media (min-width: get-breakpoint(sm)) {
+    font-size: 1rem;
+  }
+
+  // TODO: Improve
+  & > * + * {
+    margin-left: 1rem;
+  }
+
+  &__image {
+    display: block;
+    flex: 0 0 100px;
+
+    &--large {
+      flex-basis: 160px;
+    }
+
+    &--small {
+      flex-basis: 80px;
+    }
+  }
+
+  &__donation-image {
+    position: relative;
+    background: #f5f5f5;
+    width: 100%;
+    height: 0;
+    padding-bottom: $img-ratio-padding;
+    font-size: 2rem;
+
+    &-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__heading {
+    color: get-color(white);
+  }
+
+  &__subheading {
+    color: get-color(gray-dark);
+  }
+
+  &__price {
+    margin-top: 2px;
+  }
+
+  &__cta {
+    margin-top: .5rem;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__cta-success {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    font-size: $text-small;
+    font-weight: $weight-header;
+    color: get-color(success);
+
+    & > * + * {
+      margin-left: .5rem;
+    }
+  }
+
+  &--columns {
+    #{$this}__qty {
+      flex: 0;
+      flex-basis: 30px;
+      text-align: right;
+    }
+
+    #{$this}__price {
+      flex: 0;
+      flex-basis: 70px;
+      text-align: right;
+      margin-top: 0;
+    }
+  }
+}

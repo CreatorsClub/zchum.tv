@@ -1,0 +1,45 @@
+<section class="products-section">
+  <div class="container wrapper">
+    <div class="products-section__divider">
+      {% include 'divider', heading: collections[section.settings.collection].title %}
+    </div>
+
+    <div class="products-section__grid">
+      <div class="grid grid--waffle">
+        {% for product in collections[section.settings.collection].products limit:section.settings.amount %}
+          <div class="grid__column grid__column--6 grid__column--4@sm grid__column--3@lg">
+            {% include 'product-tile' with product %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Products Section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "number",
+        "id": "amount",
+        "label": "Amount",
+        "default": 8
+      }
+    ],
+    "presets": [
+      {
+        "category": "Products",
+        "name": "Products Section",
+        "settings": {
+          "amount": 8
+        }
+      }
+    ]
+  }
+{% endschema %}

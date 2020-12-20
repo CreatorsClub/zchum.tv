@@ -1,0 +1,39 @@
+.product {
+  background-color: $color-background-alternative;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-bottom: 64px;
+  }
+
+  &__breadcrumbs {
+    display: none;
+
+    @media (min-width: get-breakpoint(sm)) {
+      display: block;
+    }
+  }
+
+  &__main {
+    @media (min-width: get-breakpoint(sm)) {
+      margin-top: 32px;
+    }
+  }
+
+  &__grid {
+    & > * + * {
+      margin-top: 24px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__info {
+    & > * + * {
+      margin-top: 16px;
+    }
+  }
+}

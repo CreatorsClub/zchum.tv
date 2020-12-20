@@ -1,0 +1,34 @@
+{
+  "name": "bilbo-boilerplate-theme",
+  "version": "0.1.0",
+  "description": "Bilbo - ultimate boilerplate theme for internal Fourthwall themes.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "fourthwall-tools start",
+    "start:upload": "fourthwall-tools start --uploadOnInit",
+    "build": "fourthwall-tools build",
+    "build:ci": "fourthwall-tools build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.8.3",
+    "@babel/plugin-transform-react-jsx": "7.8.0",
+    "@babel/preset-env": "7.8.7",
+    "@babel/preset-react": "7.8.0",
+    "eslint": "^6.7.2",
+    "eslint-config-standard-jsx": "8.1.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.17.0",
+    "fourthwall-tools": "0.4.5"
+  },
+  "dependencies": {
+    "axios": "0.19.0",
+    "dayjs": "^1.8.21",
+    "ismobilejs": "1.0.3",
+    "normalize.css": "8.0.1",
+    "preact": "10.2.1",
+    "tiny-slider": "2.9.2",
+    "validator": "^13.1.1"
+  }
+}

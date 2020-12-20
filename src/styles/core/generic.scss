@@ -1,0 +1,36 @@
+* {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: get-color(background);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  fill: currentColor;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+ul {
+  // TODO: Improve
+  padding-left: 17px;
+}

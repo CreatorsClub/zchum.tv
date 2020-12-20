@@ -1,0 +1,79 @@
+.drawer {
+  $this: &;
+
+  position: relative;
+  z-index: 30;
+
+  &__background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    background-color: rgba(get-color(black), .5);
+    opacity: 0;
+    transition: $transition-base;
+  }
+
+  &__content {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    background-color: get-color(drawer-bg);
+    border-left: 2px solid get-color(drawer-border);
+    visibility: hidden;
+    opacity: 0;
+    overflow-y: auto;
+    transition: $transition-base;
+  }
+
+  &__content-inner {
+    height: auto;
+    width: 460px;
+    max-width: 100%;
+    padding: 24px;
+
+    @media (min-width: get-breakpoint(sm)) {
+      padding: 32px;
+    }
+  }
+
+  &--left {
+    #{$this}__content {
+      left: 0;
+      transform: translate(-100%, 0);
+    }
+  }
+
+  &--right {
+    #{$this}__content {
+      right: 0;
+      transform: translate(100%, 0);
+    }
+  }
+
+  &--product {
+    #{$this}__content {
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      transform: translate(100%, 0);
+
+      @media (min-width: get-breakpoint(sm)) {
+        width: auto;
+      }
+    }
+  }
+
+  &.is-visible {
+    #{$this}__background,
+    #{$this}__content {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+

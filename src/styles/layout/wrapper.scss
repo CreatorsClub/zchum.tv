@@ -1,0 +1,14 @@
+.wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &--edgeless-to\@#{md} {
+    padding-left: 0;
+    padding-right: 0;
+
+    @media (min-width: get-breakpoint(md)) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}

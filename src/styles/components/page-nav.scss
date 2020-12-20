@@ -1,0 +1,25 @@
+.page-nav {
+  &__head {
+    line-height: 22px;
+  }
+
+  &__items {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 14px;
+  }
+
+  &__item {
+    font-size: 16px;
+    line-height: 26px;
+
+    > a {
+      color: get-color(black);
+      transition: $transition-base;
+
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<section class="also-bought edge-mobile">
+  <div class="container wrapper">
+    <div class="also-bought__grid">
+      <div class="grid grid--waffle">
+        {% for product in collections['bestsellers'].products limit:section.settings.amount %}
+          <div class="grid__column grid__column--6 grid__column--4@sm grid__column--3@lg">
+            {% include 'product-tile' with product %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Also Bought",
+    "settings": [
+      {
+        "type": "number",
+        "id": "amount",
+        "label": "amount",
+        "default": 5
+      }
+    ],
+    "presets": [
+      {
+        "category": "Products",
+        "name": "Also Bought",
+        "settings": {
+          "amount": 5
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,107 @@
+.header {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: get-breakpoint(md)) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  &__sections {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &__section {
+    display: flex;
+    flex: 1 1;
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+    align-items: center;
+
+    @media (min-width: get-breakpoint(sm)) {
+      flex-basis: auto;
+      max-width: 100%;
+    }
+
+    &--hamburger {
+      @media (min-width: get-breakpoint(sm)) {
+        display: none;
+      }
+    }
+
+    &--primary {
+      justify-content: center;
+
+      @media (min-width: get-breakpoint(sm)) {
+        justify-content: flex-start;
+      }
+    }
+
+    &--secondary {
+      justify-content: flex-end;
+    }
+  }
+
+  &__logo {
+    display: block;
+    max-width: 61px;
+    width: 100%;
+    color: get-color(black);
+
+    @media (min-width: get-breakpoint(sm)) {
+      max-width: 86px;
+    }
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &-item {
+      flex: 0 1 auto;
+
+      & + & {
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: .7rem 1.4rem;
+    color: get-color(header-link);
+    font-weight: $weight-header;
+
+    &:hover {
+      color: get-color(header-link-hover);
+    }
+  }
+
+  &__icon {
+    display: block;
+    padding: .7rem 1rem;
+    color: get-color(header-link);
+
+    &:hover {
+      color: get-color(header-link-hover);
+    }
+  }
+
+  &__cta {
+    margin-left: 1.5rem;
+  }
+}

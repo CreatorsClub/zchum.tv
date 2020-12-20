@@ -1,0 +1,33 @@
+.confirmation {
+  &__container {
+    max-width: 720px;
+    margin: 36px auto 96px;
+    text-align: center;
+
+    @media (max-width: get-breakpoint(sm)) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__header {
+    font-weight: 600;
+  }
+
+  &__paragraph {
+    line-height: 24px;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__inputs-container {
+    max-width: 610px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__inputs-heading {
+    margin-bottom: 16px;
+  }
+}

@@ -1,0 +1,53 @@
+.thank-you {
+  background-color: $color-background-alternative;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  &__container {
+    margin: 16px 0;
+  }
+
+  &__info {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @media (min-width: get-breakpoint(sm)) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    & > * + * {
+      margin-top: 24px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: get-breakpoint(md)) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    & > * + * {
+      margin-top: 16px;
+
+      @media (min-width: get-breakpoint(md)) {
+        margin-top: 0;
+        margin-left: 16px;
+      }
+    }
+  }
+
+  &__cta-item {
+    flex: 1 1 auto;
+  }
+}

@@ -1,0 +1,21 @@
+.cart-empty {
+  text-align: center;
+
+  &__heading {
+    color: get-color(white);
+  }
+
+  &__content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @media (min-width: get-breakpoint(sm)) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  &__cta {
+    margin-top: 2.5rem;
+  }
+}

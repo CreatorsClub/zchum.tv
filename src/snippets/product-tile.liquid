@@ -1,0 +1,24 @@
+<a href="{{ product.url }}" class="product-tile">
+  {% if product.status != 'LIVE' %}
+  <div class="product-tile__info-badge product-tile__info-badge--visible">Sold out</div>
+  {% endif %}
+
+  <div class="product-tile__body">
+    <div class="product-tile__container product-tile__container--background">
+      <div class="product-tile__cta">
+        <div class="button button--primary button--unhoverable">See more</div>
+      </div>
+
+      <div
+        class="product-tile__image product-tile__image--primary"
+        style="background-image: url({{ product.featured_image.src | img_url: '720x' }});"
+      ></div>
+    </div>
+  </div>
+
+  <div class="product-tile__footer">
+    <p class="product-tile__heading">{{ product.title }}</p>
+
+    <p class="product-tile__price">{{ product.price | money }}</p>
+  </div>
+</a>

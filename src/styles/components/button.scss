@@ -1,0 +1,157 @@
+.button {
+  $this: &;
+
+  display: inline-block;
+  border-radius: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 12px 16px;
+  border: 0;
+  cursor: pointer;
+  transition: $transition-base;
+  font-family: $font-general;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  &__spinner {
+    display: none;
+    margin-left: 8px;
+    position: relative;
+    top: 1px;
+  }
+
+  // Colors
+  &--black {
+    background-color: get-color(black);
+    color: get-color(white);
+
+    &:hover {
+      background-color: get-color(white);
+      color: get-color(black);
+    }
+  }
+
+  &--primary {
+    position: relative;
+    z-index: 1;
+    color: get-color(white);
+    background-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: calc(100% + 40px);
+      height: 100%;
+      background: linear-gradient(23.05deg, get-color(secondary) 0%, get-color(primary) 100%);
+      z-index: -1;
+      transition: $transition-base;
+    }
+
+    &:hover {
+      &::before {
+        transform: translateX(-40px);
+      }
+    }
+
+    &#{$this}--unhoverable {
+      &:hover {
+        &::before {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  // Sizes
+  &--xsmall {
+    padding: 8px 14px;
+  }
+
+  &--large {
+    padding: 10px 26px;
+  }
+
+  // Utilities
+  &--outline {
+    &#{$this}--primary {
+      position: relative;
+      overflow: hidden;
+      color: get-color(white);
+      padding: 2px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: calc(100% + 40px);
+        height: 100%;
+        background: linear-gradient(23.05deg, get-color(secondary) 0%, get-color(primary) 100%);
+        z-index: -1;
+        transition: $transition-base;
+      }
+
+      &:hover {
+        &::before {
+          transform: translateX(-40px);
+        }
+      }
+
+      & > span {
+        display: block;
+        padding: 10px 14px;
+        background-color: get-color(background);
+      }
+
+      &#{$this}--alternative {
+        & > span {
+          background-color: get-color(background-alternative);
+        }
+      }
+    }
+
+    &#{$this}--white {
+      border: 2px solid rgba(get-color(white), 0.2);
+      color: get-color(white);
+
+      &:hover {
+        border-color: rgba(get-color(white), 0.4);
+      }
+    }
+  }
+
+  &--expand {
+    display: block;
+    width: 100%;
+  }
+
+  &--icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > * + * {
+      margin-left: 8px;
+    }
+  }
+
+  // States
+  &:disabled {
+    cursor: not-allowed;
+    color: get-color(button-disabled-text) !important;
+    background-color: get-color(button-disabled-bg) !important;
+  }
+
+  &.is-loading {
+    #{$this}__spinner {
+      display: inline-block;
+    }
+  }
+}

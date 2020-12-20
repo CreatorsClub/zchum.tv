@@ -1,0 +1,42 @@
+// Style user output html
+.html-formatter {
+  & > * + * {
+    margin-top: 10px;
+  }
+
+  &--page {
+    & > * + * {
+      margin-top: 15px;
+    }
+  }
+
+  ol,
+  ul {
+    padding-left: 1.1em;
+
+    li {
+      & + li {
+        margin-top: 7px;
+      }
+    }
+  }
+
+  ul {
+    list-style: disc outside none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:not(:first-child) {
+      margin-top: 28px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-top: 38px;
+      }
+    }
+  }
+}

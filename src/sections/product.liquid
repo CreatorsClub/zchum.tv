@@ -1,0 +1,125 @@
+<section class="product">
+  <div class="container wrapper">
+    <div class="product__breadcrumbs">
+      {% include 'breadcrumbs-product' %}
+    </div>
+
+    <div class="product__main">
+      <div class="product__grid grid">
+        <div class="grid__column grid__column--12 grid__column--7@sm">
+          <div class="product__gallery">
+            {% include 'product-gallery' %}
+          </div>
+        </div>
+
+        <div class="grid__column grid__column--12 grid__column--5@sm">
+          <div class="product__info">
+            <div class="product-info">
+              <div class="product-info__section">
+                <h1 class="product-info__title h2">
+                  {{ product.title }}
+                </h1>
+              </div>
+
+              <div class="product-info__section">
+                <div class="product-info__description">
+                  {{ product.description }}
+                </div>
+              </div>
+
+              {% if product.has_only_default_variant != true %}
+              <div class="product-info__section">
+                <div class="product-info__options">
+                  {% include 'product-options' %}
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="product-info__section">
+                <h3 class="product-info__price" data-product="price">
+                  {{ product.price | money }}
+                </h3>
+              </div>
+
+              <div class="product-info__section">
+              {% if product.available %}
+                <div class="product-info__cta">
+                  <div class="product-info__cta-item product-info__cta-item--qty">
+                    <select
+                      data-product="qty"
+                      data-select="container"
+                      data-trigger-input="{{ product.id }}"
+                      class="select select--large"
+                    >
+                      {% for i in (settings.amount_min..settings.amount_max) %}
+                        {% if forloop.last == true %}
+                          <option value="more">{{ i }}+</option>
+                        {% else %}
+                          <option value="{{ i }}">{{ i }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+
+                    <input
+                      type="number"
+                      class="input input--qty hidden"
+                      data-product="qty"
+                      data-select-input="{{ product.id }}"
+                      placeholder="Qty"
+                    >
+                  </div>
+
+                  <div class="product-info__cta-item product-info__cta-item--add-to-cart">
+                    <button class="product-info__button button button--primary button--large" data-product="add">
+                      <span data-product="add-label">Add To Cart</span>
+
+                      <span class="button__spinner">
+                        <div class="spinner spinner--small spinner--light"></div>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <p class="product-info__error" data-product="qty-error">Out of stock</p>
+              {% else %}
+                <p class="product-info__out-of-stock-label">Out of stock</p>
+              {% endif %}
+              </div>
+
+              <div class="product-info__section">
+                {% include 'product-additional-info' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'product-drawer' %}
+
+{% unless product == empty %}
+  <script type="application/json" id="product-json">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+{% schema %}
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "number",
+        "id": "recommended_amount",
+        "label": "Recommended Amount",
+        "default": 4
+      },
+      {
+        "type": "text",
+        "id": "recommended_label",
+        "label": "Recommended Label",
+        "default": "Others also bought"
+      }
+    ]
+  }
+{% endschema %}

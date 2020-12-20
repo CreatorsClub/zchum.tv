@@ -1,0 +1,68 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $font-general;
+  color: #61606f;
+  font-weight: $weight-general;
+  line-height: $line-general;
+  font-size: $root;
+}
+
+body {
+  font-size: 1rem;
+}
+
+// Headings
+// =================================================
+@each $heading, $value in $headings {
+  #{$heading},
+  .#{$heading} {
+    font-size: $value;
+  }
+}
+
+// responsive headings
+@each $breakpoint, $value in $breakpoints {
+  @media (min-width: $value) {
+    @each $heading, $size in map-get($headings-responsive, $breakpoint) {
+      #{$heading},
+      .#{$heading} {
+        font-size: $size;
+      }
+    }
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  line-height: $line-header;
+  color: get-color(heading);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h1,
+.h1 {
+  font-weight: 700;
+  line-height: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: get-color(secondary);
+  transition: $transition-base;
+
+  &:hover {
+    color: get-color(white);
+  }
+}

@@ -1,0 +1,83 @@
+<div class="header">
+  <div class="container wrapper">
+    <div class="header__sections">
+      <div class="header__section header__section--hamburger">
+        <a href="#" data-drawer-trigger="menu-mobile" class="header__icon">
+          {% include 'icon-hamburger' %}
+        </a>
+      </div>
+
+      <div class="header__section header__section--primary">
+        <div class="header__logo">
+          <a href="{{ settings.logo_href }}" class="header__logo-link">
+            {% include 'logo' %}
+          </a>
+        </div>
+
+        <nav class="header__nav visible@sm">
+          <ul class="header__list">
+            {% for link in linklists.main-menu.links %}
+              <li class="header__list-item">
+                <a
+                  href="{{ link.url }}"
+                  class="header__link"
+                >{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <div class="header__social visible@sm">
+          <ul class="header__list">
+            {% include 'socials', li_class: 'header__list-item', a_class: 'header__icon' %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="header__section header__section--secondary">
+        <ul class="header__list">
+          <li class="header__list-item visible@sm">
+            <a href="/cart" class="header__link">
+              Sign in
+            </a>
+          </li>
+
+          <li class="header__list-item">
+            <a href="/cart" class="header__icon">
+              {% include 'cart-widget' %}
+            </a>
+          </li>
+
+          <li class="header__list-item visible@sm">
+            <div class="header__cta">
+              <a
+                href="{{ section.settings.cta_url }}"
+                class="button button--primary button--small"
+              >{{ section.settings.cta_label }}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cta_label",
+        "label": "Call to action Label",
+        "default": "Become a member"
+      },
+      {
+        "type": "text",
+        "id": "cta_url",
+        "label": "Call to action URL",
+        "default": "#"
+      }
+    ]
+  }
+{% endschema %}

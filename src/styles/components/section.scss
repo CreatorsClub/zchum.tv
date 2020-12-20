@@ -1,0 +1,115 @@
+.section {
+  $this: &;
+
+  position: relative;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__grid {
+    & > * + * {
+      margin-top: 40px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__heading {
+    color: inherit;
+    font-size: 20px;
+  }
+
+  &__paragraph {
+    opacity: 0.72;
+  }
+
+  &__content {
+    position: relative;
+    margin-top: 16px;
+
+    & > * + * {
+      margin-top: 32px;
+    }
+
+    &--large {
+      margin-top: 24px;
+
+      & > * + * {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &__ctas {
+    display: flex;
+    flex-direction: row;
+
+    & > * + * {
+      margin-left: 16px;
+    }
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--secondary {
+    background-color: $color-background-alternative;
+  }
+
+  &--light {
+    color: get-color(gray-light);
+  }
+
+  &--large {
+    @media (min-width: get-breakpoint(md)) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  &--xlarge {
+    @media (min-width: get-breakpoint(sm)) {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    @media (min-width: get-breakpoint(md)) {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  }
+
+  &--podcast {
+    color: get-color(white);
+    background: linear-gradient(16.7deg, get-color(secondary) 0%, get-color(primary) 100%);
+
+    #{$this}__background {
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: 60% -25px;
+      filter: grayscale(30%);
+      opacity: 0.2;
+    }
+  }
+}

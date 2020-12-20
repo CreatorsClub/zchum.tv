@@ -1,0 +1,148 @@
+// Breakpoints/layout
+// =================================================
+$breakpoints: (
+  sm: 680px,
+  md: 1024px,
+  lg: 1440px,
+) !default;
+
+// TODO: Update container width modifiers
+$container-width: 1170px;
+$container-width-hd: 1600px;
+$container-width-md: 890px;
+
+$gutter: 20px;
+$gutter-sm: 40px;
+
+// Typography
+// =================================================
+$font-general: 't26-carbon', sans-serif !default;
+$root: 14px !default;
+
+$text-small: 12px;
+$text-xsmall: 10px;
+$text-medium: 16px;
+
+$line-general: 1.2em !default;
+$line-header: 1.2em !default;
+
+$weight-general: 700;
+$weight-header: 700;
+
+$medium-wide-text: 0.04em;
+$wide-text: 0.08em;
+
+$headings: (
+  h1: 36px,
+  h2: 24px,
+  h3: 24px,
+  h4: 18px,
+  h5: 14px,
+  h6: 10px,
+) !default;
+
+$headings-responsive: (
+  sm: (
+    h1: 36px,
+    h2: 24px,
+    h3: 24px,
+    h4: 18px,
+    h5: 14px,
+    h6: 10px,
+  ),
+  md: (
+    h1: 36px,
+    h2: 24px,
+    h3: 24px,
+    h4: 18px,
+    h5: 14px,
+    h6: 10px,
+  ),
+  lg: (
+    h1: 36px,
+    h2: 24px,
+    h3: 24px,
+    h4: 18px,
+    h5: 14px,
+    h6: 10px,
+  ),
+  xlg: (
+    h1: 36px,
+    h2: 24px,
+    h3: 24px,
+    h4: 18px,
+    h5: 14px,
+    h6: 10px,
+  ),
+) !default;
+
+$color-primary: #f728fa;
+$color-image-background: #eaeaea;
+$color-background-alternative: #0f1717;
+
+// Colors
+// =================================================
+$colors: (
+  background: #0a0f0f,
+  background-alternative: $color-background-alternative,
+  white: #fff,
+  heading: #fff,
+  primary: $color-primary,
+  primary-dark: $color-primary,
+  secondary-pale: #898984,
+  secondary: #24b0ff,
+  secondary-dark: #0c2340,
+  success: #4caf50,
+  error: #f44336,
+  text-pale: #444,
+  gray-lighter: #f7f7f9,
+  gray-light: #eaeaea,
+  gray-alert: #f3f2f1,
+  gray-select: #f2f2f2,
+  gray-input: #d3d3d3,
+  gray: #e6e7eb,
+  gray-dark: #888,
+  gray-darker: #6d7b8c,
+  gray-darkest: #6c6c6c,
+  black: #0A0F0F,
+  header-link: #000,
+  header-link-hover: #666,
+  drawer-bg: #171415,
+  drawer-border: #171415,
+  divider: #484752,
+  input-border: #eee,
+  input-bg: #fff,
+  image-bg: $color-image-background,
+  modal-bg: #171415,
+  button-primary-text: #fff,
+  button-primary-bg: #0042ff,
+  button-primary-hover-text: #fff,
+  button-primary-hover-bg: #000,
+  button-pale-text: #000,
+  button-pale-bg: #f3f2f1,
+  button-pale-hover-text: #000,
+  button-pale-hover-bg: #ccc,
+  button-disabled-text: #fff,
+  button-disabled-bg: #bbb,
+  about-text: #6f675e,
+);
+
+// Images
+$img-ratio-padding: 133.33%;
+$thumbnail-img-ratio-padding: 100%;
+
+// Utilites
+$transition-time: 200ms;
+$transition-base: all 200ms ease;
+
+// Inputs
+$input-font-family: $font-general;
+$input-font-size: $root;
+$input-border-width: 2px;
+$input-border-radius: 1px;
+$input-border: $input-border-width solid map-get($colors, 'input-border');
+
+// Divider
+$divider-size: 2px;
+$divider-style: solid;
+$divider-border: $divider-size $divider-style map-get($colors, 'divider');

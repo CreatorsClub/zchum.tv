@@ -1,0 +1,88 @@
+.navbar {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: get-color(black);
+  color: get-color(white);
+
+  &__logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100px;
+
+    @media (min-width: get-breakpoint(md)) {
+      max-width: 148px;
+    }
+  }
+
+  &__nav {
+    & > * + * {
+      margin-left: 0;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-left: 24px;
+      }
+
+      @media (min-width: get-breakpoint(md)) {
+        margin-left: 40px;
+      }
+    }
+
+    &--menu {
+      & > * + * {
+        margin-left: 8px;
+
+        @media (min-width: get-breakpoint(sm)) {
+          margin-left: 24px;
+        }
+
+        @media (min-width: get-breakpoint(md)) {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    &--socials {
+      flex-wrap: wrap;
+      margin: -8px;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin: 0;
+      }
+
+      & > * {
+        padding: 8px;
+        flex: 0 0 auto;
+
+        &:nth-child(n + 4) {
+          display: none;
+        }
+
+        @media (min-width: get-breakpoint(sm)) {
+          padding: 0;
+
+          &:nth-child(n + 4) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__menu-item {
+    display: none;
+
+    @media (min-width: get-breakpoint(sm)) {
+      display: block;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    color: inherit;
+
+    &:hover {
+      color: get-color(primary);
+    }
+  }
+}

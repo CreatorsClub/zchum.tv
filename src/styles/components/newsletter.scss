@@ -1,0 +1,46 @@
+.newsletter {
+  position: relative;
+
+  &__label {
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    top: -22px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    width: 100%;
+
+    @media (min-width: get-breakpoint(sm)) {
+      left: 0;
+      text-align: left;
+      transform: none;
+      width: auto;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+
+    @media (min-width: get-breakpoint(md)) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__input {
+    text-align: center;
+    flex: 1 1 auto;
+
+    @media (min-width: get-breakpoint(md)) {
+      text-align: left;
+      flex: 0 0 215px;
+    }
+  }
+
+  &__submit {
+    flex: 0 0 auto;
+  }
+}

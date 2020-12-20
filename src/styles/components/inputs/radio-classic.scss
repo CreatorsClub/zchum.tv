@@ -1,0 +1,54 @@
+.radio-classic {
+  $this: &;
+
+  position: relative;
+
+  &__input {
+    display: none;
+
+    &:checked + #{$this}__label {
+      &::before {
+        border: 2px solid get-color(secondary);
+      }
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: get-color(black);
+    font-weight: $weight-header;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      border: 1px solid get-color(gray-input);
+      margin-right: .5rem;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: get-color(secondary);
+      opacity: 0;
+      transition: $transition-base;
+    }
+  }
+}

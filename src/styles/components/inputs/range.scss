@@ -1,0 +1,114 @@
+$range: (
+  track-height: 2px,
+  track-border-radius: 4px,
+  track-border-width: 0,
+  track-border: 0,
+  track-bg: rgba(#fff, .8),
+  track-bg-inactive: rgba(#fff, .4), // MS only
+  track-box-shadow: none,
+  track-width: 100%,
+  track-cursor: pointer,
+  thumb-height: 14px,
+  thumb-width: 14px,
+  thumb-bg: #fff,
+  thumb-border-radius: 100%,
+  thumb-box-shadow: none,
+  thumb-cursor: grab,
+  thumb-border: 0
+);
+
+@mixin range-track() {
+  height: map-get($range, 'track-height');
+  width: map-get($range, 'track-width');
+  border: map-get($range, 'track-border');
+  box-shadow: map-get($range, 'track-box-shadow');
+  cursor: map-get($range, 'track-cursor');
+}
+
+@mixin range-thumb() {
+  height: map-get($range, 'thumb-height');
+  width: map-get($range, 'thumb-width');
+  background: map-get($range, 'thumb-bg');
+  border-radius: map-get($range, 'thumb-border-radius');
+  cursor: map-get($range, 'thumb-cursor');
+  box-shadow: map-get($range, 'thumb-box-shadow');
+  border: map-get($range, 'thumb-border');
+  position: relative;
+}
+
+.range {
+  width: 100%;
+  height: 100%;
+
+  &__input {
+    -webkit-appearance: none; 
+    width: 100%;
+    height: 34px;
+    background: none;
+    cursor: map-get($range, 'track-cursor');
+    vertical-align: bottom;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include range-track();
+
+      -webkit-appearance: none;
+      background: map-get($range, 'track-bg');
+      border-radius: map-get($range, 'track-border-radius');
+    }
+
+    &::-webkit-slider-thumb {
+      @include range-thumb();
+
+      -webkit-appearance: none;
+      margin-top: (( map-get($range, 'track-border-width') * -2 + map-get($range, 'track-height')) / 2) - (map-get($range, 'thumb-height') / 2);
+    }
+
+    &::-moz-range-track {
+      @include range-track();
+
+      background: map-get($range, 'track-bg');
+      border-radius: map-get($range, 'track-border-radius');
+    }
+
+    &::-moz-range-thumb {
+      @include range-thumb();
+    }
+
+    &::-moz-focus-outer { 
+      border: 0; 
+    }
+
+    &::-ms-track {
+      @include range-track();
+
+      background: transparent;
+      border-color: transparent;
+      border-width: map-get($range, 'thumb-width') 0;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      background: map-get($range, 'track-bg');
+      border: map-get($range, 'track-border');
+      border-radius: map-get($range, 'track-border-radius');
+      box-shadow: map-get($range, 'track-box-shadow');
+    }
+
+    &::-ms-fill-upper {
+      background: map-get($range, 'track-bg-inactive');
+      border: map-get($range, 'track-border');
+      border-radius: map-get($range, 'track-border-radius');
+      box-shadow: map-get($range, 'track-box-shadow');
+    }
+
+    &::-ms-thumb {
+      @include range-thumb();
+
+      margin-top: 0;
+    }
+  }
+}

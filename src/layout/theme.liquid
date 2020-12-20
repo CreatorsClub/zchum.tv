@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ shop.locale }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link rel="canonical" href="{{ canonical_url }}" />
+
+    <title>{{ page_title }}</title>
+
+    {% include 'head-meta-socials' %}
+
+    {% include 'google-analytics' %}
+
+    <link rel="stylesheet" href="https://use.typekit.net/npg6bxa.css">
+
+    <link href="{{ settings.favicon | img_url: '180x180' }}" rel="apple-touch-icon" sizes="180x180" />
+    <link href="{{ settings.favicon | img_url: '32x32' }}" rel="icon" sizes="32x32" type="image/png" />
+    <link href="{{ settings.favicon | img_url: '16x16' }}" rel="icon" sizes="16x16" type="image/png" />
+
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <meta content="#ffffff" name="theme-color" />
+    <meta content="0.2.6" name="version">
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+
+  <body class="body">
+    {% include 'ie-support' %}
+
+    <!-- template object is not supported for now -->
+    {% capture isProduct %}{{ product | json }}{% endcapture %}
+    {% capture isPage %}{{ page | json }}{% endcapture %}
+
+    {% capture mainModifier %}
+      {% if isProduct != "" and isProduct != "null" %}
+        product
+      {% elsif isPage != "" and isPage != "null" %}
+        {% if page.template_suffix != "" %}{{ page.template_suffix }}{% else %}page{% endif %}
+      {% endif %}
+    {% endcapture %}
+
+    <div class="main {% if mainModifier != blank %} main--{{ mainModifier | strip }}{% endif %}">
+      {% section 'menu-mobile' %}
+
+      <div class="main__status" data-status="bar">
+        {% section 'bar-subscribe-success' %}
+      </div>
+
+      <div class="main__navbar">
+        {% section 'navbar' %}
+      </div>
+
+      <div class="main__content">
+        {{ content_for_layout }}
+      </div>
+
+      <footer class="main__footer">
+        {% section 'footer' %}
+      </footer>
+    </div>
+
+    {{ 'theme.js' | asset_url | script_tag }}
+  </body>
+</html>

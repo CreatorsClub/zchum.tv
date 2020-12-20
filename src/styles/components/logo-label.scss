@@ -1,0 +1,15 @@
+.logo-label {
+  display: block;
+  color: get-color(black);
+
+  &__list {
+    & > * + * {
+      margin-left: .8rem;
+    }
+  }
+
+  &__content {
+    font-weight: $weight-header;
+    font-size: $text-small;
+  }
+}

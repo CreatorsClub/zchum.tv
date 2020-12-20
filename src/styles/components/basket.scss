@@ -1,0 +1,9 @@
+.basket {
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: inherit;
+
+  &:hover {
+    color: get-color(primary);
+  }
+}

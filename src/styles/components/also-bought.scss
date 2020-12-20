@@ -1,0 +1,25 @@
+.also-bought {
+  &__item {
+    width: 37vw;
+
+    @media (min-width: get-breakpoint(sm)) {
+      width: 164px;
+    }
+
+    &:first-child {
+      margin-left: 1rem;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      margin-right: 1rem;
+
+      @media (min-width: get-breakpoint(sm)) {
+        margin-right: 0;
+      }
+    }
+  }
+}

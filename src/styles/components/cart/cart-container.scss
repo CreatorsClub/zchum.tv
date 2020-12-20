@@ -1,0 +1,10 @@
+.cart-container {
+  background-color: $color-background-alternative;
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+}

@@ -1,0 +1,19 @@
+
+<!-- statement not working on FW for now (can't compare empty collection object) -->
+{% if collection != null %}
+  {% assign assortment = collection %}
+{% else %}
+  {% assign assortment = collections['bestsellers'] %}
+{% endif %}
+
+<section class="products">
+  <div class="container wrapper wrapper--edgeless-to@md">
+    <div class="grid grid--gapless">
+      {% for product in collections['bestsellers'].products %}
+        <div class="grid__column grid__column--6 grid__column--4@sm grid__column--3@lg">
+          {% include 'product-tile' with product %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

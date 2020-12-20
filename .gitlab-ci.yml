@@ -1,0 +1,4 @@
+include:
+  - project: 'fourthwall/themes/shared'
+    ref: master
+    file: '/templates/.gitlab-ci.yml'

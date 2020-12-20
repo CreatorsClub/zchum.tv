@@ -1,0 +1,19 @@
+<section class="divider-section">
+  <div class="container wrapper">
+    {% include 'divider', heading: section.settings.heading %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Divider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Divider"
+      }
+    ]
+  }
+{% endschema %}

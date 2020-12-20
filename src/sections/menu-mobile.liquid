@@ -1,0 +1,64 @@
+<aside class="drawer" data-drawer="menu-mobile">
+  <div class="drawer__background" data-drawer-trigger="menu-mobile"></div>
+  <div class="drawer__content">
+    <div class="drawer__content-inner">
+      <div class="menu-mobile">
+        <div class="menu-mobile__section">
+          <div class="menu-mobile__header">
+            <div class="menu-mobile__header-item menu-mobile__header-item--close">
+              <a href="#" class="menu-mobile__close" data-drawer-trigger="menu-mobile">
+                {% include 'icon-close-big' %}
+              </a>
+            </div>
+            <div class="menu-mobile__header-item menu-mobile__header-item--logo">
+              <div class="menu-mobile__logo">
+                <a href="{{ settings.logo_href }}" class="menu-mobile__logo-link">
+                  {% include 'logo' %}
+                </a>
+              </div>
+            </div>
+            <div class="menu-mobile__header-item menu-mobile__header-item--cart">
+              <a href="/cart" class="menu-mobile__cart">
+                {% include 'cart-widget' %}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-mobile__section">
+          <nav class="menu-mobile__primary-nav">
+            <ul class="list">
+              {% for link in linklists.main-menu.links %}
+                <li class="list__item">
+                  <a href="{{ link.url }}" class="menu-mobile__primary-link">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+        <div class="menu-mobile__section">
+          <div class="menu-mobile__cta">
+            <!-- TODO: Remove hardcoded URL. -->
+            <a
+              href="https://secure.actblue.com/donate/tulsi2020?refcode=store"
+              class="button button--primary button--expand"
+            >Contribute</a>
+          </div>
+        </div>
+
+        <div class="menu-mobile__section">
+          <nav class="menu-mobile__secondary-nav">
+            <ul class="list">
+              {% for link in linklists.footer.links %}
+                <li class="list__item">
+                  <a href="{{ link.url }}" class="menu-mobile__secondary-link">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

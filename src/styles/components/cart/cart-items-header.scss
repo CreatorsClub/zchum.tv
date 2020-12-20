@@ -1,0 +1,40 @@
+.cart-items-header {
+  display: flex;
+
+  &__section {
+    flex: 1 1 auto;
+    // TODO: Improve color variable name
+    color: #61606f;
+    font-weight: 600;
+
+    & + & {
+      @media (min-width: get-breakpoint(sm)) {
+        margin-left: 1rem;
+      }
+    }
+
+    &--image {
+      @media (min-width: get-breakpoint(sm)) {
+        flex: 0 0 80px;
+      }
+    }
+
+    &--quantity {
+      @media (min-width: get-breakpoint(sm)) {
+        flex: 0 0 130px;
+      }
+    }
+
+    &--price {
+      @media (min-width: get-breakpoint(sm)) {
+        flex: 0 0 100px;
+      }
+    }
+
+    &--remove {
+      @media (min-width: get-breakpoint(sm)) {
+        flex: 0 0 40px;
+      }
+    }
+  }
+}

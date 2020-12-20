@@ -1,0 +1,58 @@
+<footer class="footer">
+  <div class="footer__container container wrapper">
+    <div class="footer__grid grid grid--middle">
+      <div class="grid__column grid__column--12 grid__column--4@sm">
+        {% include 'newsletter-form' %}
+      </div>
+
+      <div class="grid__column grid__column--12 grid__column--4@sm">
+        <a
+          href="/"
+          class="footer__logo"
+        >
+          <img
+            src="{{ 'logo.png' | asset_url }}"
+            alt="{{ shop.name }}"
+          >
+        </a>
+      </div>
+
+      <div class="footer__contact-cta-col grid__column grid__column--12 grid__column--4@sm">
+        <a
+          href="mailto:{{ shop.email }}"
+          class="button button--primary button--outline"
+        ><span>Contact customer support</span></a>
+      </div>
+    </div>
+
+    <div class="footer__grid grid grid--middle">
+      <div class="footer__copy-col grid__column grid__column--12 grid__column--4@sm">
+        <p class="underline underline--left">© 2020 Zchum. Partnered with <a href="https://creatorsclub.net/">creators club</a></p>
+      </div>
+
+      <div class="footer__socials-col grid__column grid__column--12 grid__column--4@sm">
+        <ul class="footer__socials list list--horizontal list--middle list--center">
+          {% include 'socials' %}
+        </ul>
+      </div>
+
+      <div class="grid__column grid__column--12 grid__column--4@sm">
+        <div class="underline underline--right">
+          <ul class="footer__menu list list--horizontal list--inline">
+            {% for link in linklists.footer.links %}
+              <li class="list__item">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer"
+  }
+{% endschema %}

@@ -1,0 +1,23 @@
+.breadcrumbs {
+  color: #595669;
+  text-transform: uppercase;
+
+  & > * + * {
+    margin-left: 8px;
+  }
+
+  & > *:not(:last-child) {
+    &::after {
+      content: ">";
+      margin-left: 8px;
+    }
+  }
+
+  &__link {
+    color: inherit;
+
+    &--active {
+      color: get-color(white);
+    }
+  }
+}

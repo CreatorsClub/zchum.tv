@@ -1,0 +1,64 @@
+<div class="newsletter-form">
+  <div class="newsletter-form__header">
+    <h5 class="newsletter-form__heading">Join the mailing list</h5>
+  </div>
+
+  <div class="form" data-newsletter="form-container">
+    {% form 'customer' %}
+      <div class="form__response-container">
+        <div
+          data-form="response-success"
+          class="form__response"
+        >
+          <div class="alert alert--success">
+            Thanks for subscribing!
+          </div>
+        </div>
+
+        <div
+          data-form="response-error"
+          class="form__response"
+        >
+          <div class="alert alert--error">
+            <ul
+              data-form="response-error-content"
+              class="alert__list"
+            >
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <ul class="form__responsive-list list">
+          <li class="list__item list__item--expand">
+            <input
+              id="newsletter-email"
+              name="contact[email]"
+              type="email"
+              data-newsletter="email"
+              class="newsletter-form__input input input--border"
+              placeholder="example@example.com"
+              required
+            >
+          </li>
+
+          <li class="list__item list__item--fixed">
+            <button
+              type="submit"
+              data-newsletter="submit"
+              class="newsletter-form__submit button button--primary"
+            >
+              Subscribe
+              <span class="button__spinner">
+                <div class="spinner spinner--small spinner--light"></div>
+              </span>
+            </button>
+          </li>
+        </ul>
+
+        <div data-form-error="email" class="form__error"></div>
+      </div>
+    {% endform %}
+  </div>
+</div>

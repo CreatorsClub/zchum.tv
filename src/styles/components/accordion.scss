@@ -1,0 +1,64 @@
+.accordion {
+  $this: &;
+
+  &__header {
+    cursor: pointer;
+    padding: 16px 0;
+    width: 100%;
+    position: relative;
+    font-size: 16px;
+    transition: $transition-base;
+    color: get-color(white);
+    text-transform: uppercase;
+
+    &.is-active {
+      #{$this}__indicator {
+        &::after {
+          transform: rotate(0);
+        }
+      }
+    }
+  }
+
+  &__indicator {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 2px;
+    vertical-align: 3.5%;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: calc(50% - 1px);
+      width: 100%;
+      height: 2px;
+      background-color: get-color(white);
+    }
+
+    &::after {
+      transform: rotate(90deg);
+      transition: $transition-base;
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+    font-size: $text-small;
+  }
+
+  &--opened {
+    #{$this}__header {
+      color: get-color(white);
+    }
+
+    #{$this}__content {
+      max-height: auto;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.page {
+  &__content {
+    background-color: $color-background-alternative;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    &--paddingless {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

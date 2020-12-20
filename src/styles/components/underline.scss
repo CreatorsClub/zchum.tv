@@ -1,0 +1,49 @@
+.underline {
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+
+  &::before {
+    display: none;
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -16px;
+    height: 3px;
+    width: 36px;
+    background-color: get-color(black);
+
+    @media (min-width: get-breakpoint(sm)) {
+      display: block;
+    }
+  }
+
+  &--left {
+    @media (min-width: get-breakpoint(sm)) {
+      text-align: left;
+    }
+
+    &::before {
+      @media (min-width: get-breakpoint(sm)) {
+        left: 0;
+        transform: none;
+      }
+    }
+  }
+
+  &--right {
+    @media (min-width: get-breakpoint(sm)) {
+      text-align: right;
+    }
+
+    &::before {
+      @media (min-width: get-breakpoint(sm)) {
+        right: 0;
+        left: auto;
+        transform: none;
+      }
+    }
+  }
+}

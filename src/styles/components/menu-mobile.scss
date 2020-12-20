@@ -1,0 +1,40 @@
+.menu-mobile {
+  min-height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  background-color: get-color(primary);
+
+  @media (min-width: get-breakpoint(sm)) {
+    display: none;
+  }
+
+  & > * + * {
+    margin-top: 40px;
+  }
+
+  &__menu {
+    flex: 1 0 auto;
+  }
+
+  &__list {
+    text-align: center;
+
+    & > * + * {
+      margin-top: 16px;
+    }
+  }
+
+  &__link {
+    color: get-color(black);
+  }
+
+  &__footer {
+    background-image: url("./sidebar-bg.png");
+    background-repeat: no-repeat;
+    background-position: left -30px bottom -8px;
+    background-size: 90% auto;
+    padding-bottom: 65%;
+  }
+}

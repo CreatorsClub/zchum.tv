@@ -1,0 +1,22 @@
+.related-products {
+  background-color: get-color(black);
+  text-align: center;
+  padding-top: 32px;
+
+  @media (min-width: get-breakpoint(sm)) {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+
+  @media (min-width: get-breakpoint(md)) {
+    padding-bottom: 80px;
+  }
+
+  & > * + * {
+    margin-top: 32px;
+  }
+
+  &__heading {
+    color: #656473;
+  }
+}

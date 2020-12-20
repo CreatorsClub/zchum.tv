@@ -1,0 +1,36 @@
+{
+  "pages": [
+    {
+      "title": "Privacy policy",
+      "author": "Admin",
+      "body_html": "Privacy policy goes here",
+      "handle": "privacy-policy",
+      "template_suffix": "page"
+    },
+    {
+      "title": "About",
+      "author": "Admin",
+      "body_html": "",
+      "handle": "about",
+      "template_suffix": "about"
+    }
+  ],
+  "navigation": [
+    {
+      "title": "Footer",
+      "handle": "footer",
+      "links": [
+        {
+          "title": "Privacy Policy",
+          "subject_type": "http",
+          "subject": "/privacy-policy"
+        },
+        {
+          "title": "About",
+          "subject_type": "http",
+          "subject": "/about"
+        }
+      ]
+    }
+  ]
+}

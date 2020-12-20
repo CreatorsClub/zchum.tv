@@ -1,0 +1,5 @@
+<div class="cart-widget">
+  <span class="cart-widget__items" data-cart-widget="qty"{% if cart.item_count < 1 %}style="display: none;"{% endif %}>{{ cart.item_count }}</span>
+
+  {% include 'icon-cart' %}
+</div>
